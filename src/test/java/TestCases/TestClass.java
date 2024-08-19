@@ -14,10 +14,10 @@ import junit.framework.Assert;
 
 public class TestClass extends BaseClass {
 	@Test
-	public void LoginFailureTest() throws InterruptedException {
+	public void LoginFailureTest() {
 		LoginPage LP = new LoginPage();
 		LP.LoginFunction("Secret_user","Sauce_secret");
-		Thread.sleep(2000);
+		
 		LP.Validation("Epic sadface: Username and password do not match any user in this service");
 		
 	}
@@ -25,8 +25,6 @@ public class TestClass extends BaseClass {
 	public void LoginSuccessTest()  {
 		LoginPage Lp = new LoginPage();
 		Lp.LoginFunction("standard_user", "secret_sauce");
-	//Alert alert = driver.switchTo().alert();
-		//alert.accept();
 		WebElement element = driver.findElement(By.xpath("//div[contains(text(),'Products')]"));
 		Assert.assertTrue(element.isDisplayed());
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
